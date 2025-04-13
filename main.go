@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	user, err := statsValve.FindUser("k3ssler")
+	user, err := statsValve.FindUser("Bezdushnyyy")
 	if err == nil {
-		statistics, err := statsValve.GetOverallAccuracy(user)
+		statistics, err := statsValve.GetLastTwoWeeksMapsWinrate(user)
 		fmt.Println(err)
 		if err == nil {
 			for k, v := range statistics {

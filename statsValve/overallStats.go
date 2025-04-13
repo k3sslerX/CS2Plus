@@ -12,9 +12,8 @@ import (
 )
 
 const (
-	overallAPI      = "https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/"
-	matchHistoryAPI = "https://api.steampowered.com/ICSGOPlayers_730/GetMatchHistory/v1/"
-	appID           = 730 // CS2
+	overallAPI = "https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/"
+	appID      = 730 // CS2
 )
 
 type PlayerStats struct {
