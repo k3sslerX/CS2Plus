@@ -1,4 +1,4 @@
-package cs2plus
+package statsValve
 
 import (
 	"encoding/json"

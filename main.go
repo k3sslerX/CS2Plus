@@ -1,16 +1,16 @@
 package main
 
 import (
-	"cs2plus/cs2plus"
+	"cs2plus/statsValve"
 	"fmt"
 )
 
 func main() {
-	user, err := cs2plus.FindUser("k3ssler")
+	user, err := statsValve.FindUser("k3ssler")
 	if err == nil {
-		stats, err := cs2plus.GetOverallAccuracy(user)
+		statistics, err := statsValve.GetOverallAccuracy(user)
 		if err == nil {
-			for k, v := range stats {
+			for k, v := range statistics {
 				fmt.Printf("%s: %.2f\n", k, v)
 			}
 		}
