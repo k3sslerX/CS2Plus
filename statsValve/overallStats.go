@@ -12,8 +12,9 @@ import (
 )
 
 const (
-	steamAPIURL = "https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/"
-	appID       = 730 // CS2
+	overallAPI      = "https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/"
+	matchHistoryAPI = "https://api.steampowered.com/ICSGOPlayers_730/GetMatchHistory/v1/"
+	appID           = 730 // CS2
 )
 
 type PlayerStats struct {
@@ -44,8 +45,8 @@ func GetOverallStats(user *SteamUser) (*PlayerStats, error) {
 	if err != nil {
 		return nil, err
 	}
-	url := fmt.Sprintf("%s?key=%s&steamid=%d&appid=%d", steamAPIURL, steamAPIKey, user.SteamID64, appID)
-	resp, err := http.Get(url)
+	steamUrl := fmt.Sprintf("%s?key=%s&steamid=%s&appid=%d", overallAPI, steamAPIKey, user.SteamID64, appID)
+	resp, err := http.Get(steamUrl)
 	if err != nil {
 		return nil, err
 	}

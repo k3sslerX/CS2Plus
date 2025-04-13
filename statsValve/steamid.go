@@ -6,13 +6,12 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strconv"
 )
 
 const resolveVanityAPI = "https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/"
 
 type SteamUser struct {
-	SteamID64 uint64 `json:"steamid64"`
+	SteamID64 string `json:"steamid64"`
 	CustomURL string `json:"custom_url"`
 }
 
@@ -50,12 +49,8 @@ func FindUser(link string) (*SteamUser, error) {
 	}
 
 	if data.Response.Success == 1 {
-		steamID, err := strconv.ParseUint(data.Response.SteamID, 10, 64)
-		if err != nil {
-			return nil, err
-		}
 		user := SteamUser{
-			SteamID64: steamID,
+			SteamID64: data.Response.SteamID,
 			CustomURL: link,
 		}
 		return &user, nil
