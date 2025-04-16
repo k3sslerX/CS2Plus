@@ -23,6 +23,7 @@ func PrintFaceitStats(stats *statsFaceit.FaceitStats) {
 	fmt.Printf("%-25s %15d\n", "Total MVPs:", stats.TotalMVPs)
 	fmt.Printf("%-25s %15d\n", "Avg Kills per Match:", stats.AvgKills)
 	fmt.Printf("%-25s %15d\n", "Avg Headshots per Match:", stats.AvgHeadshots)
+	fmt.Printf("%-25s %15.2f%%\n", "Headshots percentage:", stats.HeadshotsPercent)
 	fmt.Printf("%-25s %15d\n", "Avg Assists per Match:", stats.AvgAssists)
 	fmt.Printf("%-25s %15d\n", "Avg MVPs per Match:", stats.AvgMVPs)
 	fmt.Printf("%-25s %15.2f\n", "Avg K/D Ratio:", stats.AvgKD)

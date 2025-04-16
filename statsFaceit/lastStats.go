@@ -30,19 +30,20 @@ func getApiKey() (string, error) {
 }
 
 type FaceitStats struct {
-	Winrate        float64
-	TotalKills     int
-	TotalHeadshots int
-	TotalAssists   int
-	TotalDeaths    int
-	TotalMVPs      int
-	AvgKills       int
-	AvgHeadshots   int
-	AvgAssists     int
-	AvgMVPs        int
-	AvgKD          float64
-	AvgKR          float64
-	ADR            float64
+	Winrate          float64
+	TotalKills       int
+	TotalHeadshots   int
+	TotalAssists     int
+	TotalDeaths      int
+	TotalMVPs        int
+	AvgKills         int
+	AvgHeadshots     int
+	HeadshotsPercent float64
+	AvgAssists       int
+	AvgMVPs          int
+	AvgKD            float64
+	AvgKR            float64
+	ADR              float64
 }
 
 type MatchStats struct {
@@ -122,6 +123,7 @@ func GetFaceitLast20MatchesStats(user *FaceitUser) (*FaceitStats, error) {
 	stats.AvgKD = float64(stats.TotalKills) / float64(stats.TotalDeaths)
 	stats.AvgKR = krs / float64(len(response.Items))
 	stats.ADR = adrs / float64(len(response.Items))
+	stats.HeadshotsPercent = (float64(stats.TotalHeadshots) / float64(stats.TotalKills)) * 100
 	stats.Winrate = (float64(wins) / float64(len(response.Items))) * 100.0
 	return &stats, nil
 }
